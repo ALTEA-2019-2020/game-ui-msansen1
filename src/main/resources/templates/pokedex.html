@@ -12,13 +12,19 @@
                 <div class="card-header">
                     <h4 class="my-0 font-weight-normal">{{name}} <!--2--><span class="badge badge-secondary">Id {{id}} <!--3--></span></h4>
                 </div>
-                <img class="card-img-top" src="{{sprites.front_default}}" alt="Pokemon"/>
+                <img class="card-img-top" src="{{sprites.front_default}}" alt="Pokemon Front"/>
+                <img class="card-img-top" src="{{sprites.back_default}}" alt="Pokemon Back"/>
 
                 <div class="card-body">
                     <span class="badge badge-primary">Speed : {{stats.speed}}</span>
                     <span class="badge badge-primary">Attack : {{stats.attack}}</span>
                     <span class="badge badge-primary">Defense : {{stats.defense}}</span>
                     <span class="badge badge-primary">HP : {{stats.hp}}</span>
+                    <span class="badge badge-secondary">Type(s) :
+                        {{#types}}
+                            {{.}}
+                        {{/types}}
+                    </span>
                 </div>
             </div>
         </div>
