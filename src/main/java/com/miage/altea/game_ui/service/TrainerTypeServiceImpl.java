@@ -1,6 +1,6 @@
 package com.miage.altea.game_ui.service;
 
-import com.miage.altea.game_ui.pokemonTypes.bo.PokemonType;
+import com.miage.altea.game_ui.pokemonTypes.bo.TrainerType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.i18n.LocaleContextHolder;
@@ -9,17 +9,16 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
-import java.util.Locale;
 
 @Service
-public class PokemonTypeServiceImpl implements PokemonTypeService {
+public class TrainerTypeServiceImpl implements TrainerTypeService {
     private RestTemplate restTemplate;
-    private String pokemonServiceUrl;
+    private String TrainerServiceUrl;
 
-    public List<PokemonType> listPokemonsTypes() {
+    public List<TrainerType> listTrainers() {
         HttpHeaders entete = new HttpHeaders();
         entete.setContentLanguage(LocaleContextHolder.getLocale());
-        PokemonType[] lpoke = this.restTemplate.getForObject(pokemonServiceUrl+"/pokemon-types/", PokemonType[].class);
+        TrainerType[] lpoke = this.restTemplate.getForObject(TrainerServiceUrl+"/trainers/", TrainerType[].class);
         return List.of(lpoke);
     }
 
@@ -28,8 +27,8 @@ public class PokemonTypeServiceImpl implements PokemonTypeService {
         this.restTemplate = restTemplate;
     }
 
-    @Value("${pokemonType.service.url}")
-    public void setPokemonTypeServiceUrl(String pokemonServiceUrl) {
-        this.pokemonServiceUrl = pokemonServiceUrl;
+    @Value("${trainerType.service.url}")
+    public void setTrainerTypeServiceUrl(String TrainerServiceUrl) {
+        this.TrainerServiceUrl = TrainerServiceUrl;
     }
 }
