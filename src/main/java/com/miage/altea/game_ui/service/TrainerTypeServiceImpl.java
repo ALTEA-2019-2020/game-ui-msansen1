@@ -15,7 +15,7 @@ public class TrainerTypeServiceImpl implements TrainerTypeService {
     private RestTemplate restTemplate;
     private String TrainerServiceUrl;
 
-    public List<TrainerType> listTrainers() {
+    public List<TrainerType> listTrainersTypes() {
         HttpHeaders entete = new HttpHeaders();
         entete.setContentLanguage(LocaleContextHolder.getLocale());
         TrainerType[] lpoke = this.restTemplate.getForObject(TrainerServiceUrl+"/trainers/", TrainerType[].class);

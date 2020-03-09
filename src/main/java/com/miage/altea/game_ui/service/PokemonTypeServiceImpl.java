@@ -3,8 +3,10 @@ package com.miage.altea.game_ui.service;
 import com.miage.altea.game_ui.pokemonTypes.bo.PokemonType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.HttpHeaders;
+import org.springframework.retry.annotation.Retryable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -21,6 +23,12 @@ public class PokemonTypeServiceImpl implements PokemonTypeService {
         entete.setContentLanguage(LocaleContextHolder.getLocale());
         PokemonType[] lpoke = this.restTemplate.getForObject(pokemonServiceUrl+"/pokemon-types/", PokemonType[].class);
         return List.of(lpoke);
+    }
+
+    @Override
+    @Cacheable("pokemon-types")
+    public PokemonType getPokemonType(int id) {
+        return this.restTemplate.getForObject(pokemonServiceUrl+"/pokemon-types/{id}", PokemonType.class, id);
     }
 
     @Autowired
