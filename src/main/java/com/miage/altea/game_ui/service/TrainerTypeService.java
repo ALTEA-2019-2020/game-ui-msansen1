@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface TrainerTypeService {
     List<TrainerType> listTrainersTypes();
+
+    TrainerType getTrainerType(String name);
 }
