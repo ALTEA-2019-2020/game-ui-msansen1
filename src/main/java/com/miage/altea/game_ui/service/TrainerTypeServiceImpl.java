@@ -19,6 +19,8 @@ import java.util.stream.Collectors;
 public class TrainerTypeServiceImpl implements TrainerTypeService {
     private RestTemplate restTemplate;
     private String TrainerServiceUrl;
+
+    @Autowired
     private PokemonTypeService pokemonTypeService;
 
     public List<TrainerType> listTrainersTypes() {
@@ -29,12 +31,8 @@ public class TrainerTypeServiceImpl implements TrainerTypeService {
 
         for (TrainerType trainer : lpoke ) {
 
-            //en faire un stream lambda
-            for (PokemonType poke : trainer.getTeam() ) {
-                PokemonType pokeFromApi = pokemonTypeService.getPokemonType(poke.getPokemonTypeId());
-                poke.merge(pokeFromApi);
-            }
-
+            List<PokemonType> pokelist = updateTeam(trainer);
+            trainer.setTeam(pokelist);
         }
         /*
         var pokemonTypesSync = Arrays.stream(lpoke).map()
@@ -47,13 +45,24 @@ public class TrainerTypeServiceImpl implements TrainerTypeService {
     public TrainerType getTrainerType(String name) {
         TrainerType trainer = this.restTemplate.getForObject(TrainerServiceUrl+"/trainers/{name}", TrainerType.class, name);
         //updating trainer team from pokemon api
-        trainer.getTeam().stream().map(pokemonType ->{
-            return pokemonType.merge(pokemonTypeService.getPokemonType(pokemonType.getPokemonTypeId()));
+        /*working
+        for (PokemonType poke : trainer.getTeam() ) {
+            PokemonType pokeFromApi = pokemonTypeService.getPokemonType(poke.getPokemonTypeId());
+            poke.merge(pokeFromApi);
+        }
+        */
 
-        }).collect(Collectors.toList());
-
+        List<PokemonType> pokelist = updateTeam(trainer);
+        trainer.setTeam(pokelist);
         return trainer;
 
+    }
+
+    private List<PokemonType> updateTeam(TrainerType trainer) {
+        return trainer.getTeam().stream().map(pokemonType ->{
+                PokemonType popo = pokemonType.merge(pokemonTypeService.getPokemonType(pokemonType.getPokemonTypeId()));
+                return popo;
+            }).collect(Collectors.toList());
     }
 
     @Autowired

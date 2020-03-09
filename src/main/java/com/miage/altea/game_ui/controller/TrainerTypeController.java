@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
+
 @Controller
 public class TrainerTypeController {
 
@@ -23,8 +25,8 @@ public class TrainerTypeController {
 
     @GetMapping(value="/trainers/{name}")
     public ModelAndView trainerByName(@PathVariable String name) {
-        var modelAndView = new ModelAndView("trainerSolo");
-        modelAndView.addObject("trainerSolo", trainerTypeService.getTrainerType(name));
+        var modelAndView = new ModelAndView("trainers");
+        modelAndView.addObject("trainerTypes", List.of(trainerTypeService.getTrainerType(name)));
         return modelAndView;
 
     }
