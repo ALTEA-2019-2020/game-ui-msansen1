@@ -8,6 +8,7 @@ import java.util.List;
 public class TrainerType {
 
     @Getter
+    @Setter
     private String name;
 
     @Getter

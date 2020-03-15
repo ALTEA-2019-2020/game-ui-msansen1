@@ -6,5 +6,7 @@ import com.miage.altea.game_ui.pokemonTypes.bo.TrainerType;
 import java.util.List;
 
 public interface TrainerTypeService {
-    List<TrainerType> listTrainers();
+    List<TrainerType> listTrainersTypes();
+
+    TrainerType getTrainerType(String name);
 }
