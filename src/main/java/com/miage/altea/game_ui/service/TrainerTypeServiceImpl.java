@@ -3,6 +3,7 @@ package com.miage.altea.game_ui.service;
 import com.miage.altea.game_ui.pokemonTypes.bo.PokemonType;
 import com.miage.altea.game_ui.pokemonTypes.bo.TrainerType;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.context.i18n.LocaleContextHolder;
@@ -66,6 +67,7 @@ public class TrainerTypeServiceImpl implements TrainerTypeService {
     }
 
     @Autowired
+    @Qualifier("trainerApiRestTemplate")
     public void setRestTemplate(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
     }
