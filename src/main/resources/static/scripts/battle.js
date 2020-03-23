@@ -47,9 +47,9 @@ function updatePokemonView(trainerName, pokemon){
     let pokemonHpBar = $(`[id='${trainerName}-pokemon-hp']`);
 
     pokemonHpBar.text(pokemon.hp);
-    pokemonHpBar.attr("aria-valuemax",pokemon.maxHp);
+    pokemonHpBar.attr("aria-valuemax",pokemon.maxhp);
     pokemonHpBar.attr("aria-valuenow",pokemon.hp);
-    pokemonHpBar.css("width",`${pokemon.hp * 100 / pokemon.maxHp}%` );
+    pokemonHpBar.css("width",`${pokemon.hp * 100 / pokemon.maxhp}%` );
 }
 
 async function pokemonExitsBattle(trainerName, pokemon){
