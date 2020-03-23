@@ -8,7 +8,7 @@ let opponentCurrentPokemon;
 
 const skipAnimations = false;
 
-const battleApiUrl = "http://localhost:8082";
+const battleApiUrl = "https://battle-api-msn.herokuapp.com/";
 
 async function startBattle(a, b){
     trainerName = a;
