@@ -31,13 +31,4 @@ public class IndexController {
         return model;
     }
 
-    @GetMapping("/preFight")
-    public ModelAndView preFight(Principal principal, @RequestParam String opponentName){
-        var model = new ModelAndView();
-        model.setViewName("prefight");
-        model.addObject("name", principal.getName());
-        model.addObject("opponentName", opponentName);
-        return model;
-    }
-
 }
