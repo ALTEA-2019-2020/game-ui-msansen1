@@ -1,17 +1,26 @@
 package com.miage.altea.game_ui.controller;
 
+import com.miage.altea.game_ui.service.TrainerTypeService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.security.Principal;
 
 @Controller
 public class IndexController {
 
+    @Autowired
+    TrainerTypeService trainerTypeService;
+
     @GetMapping("/")
-    public String index(){
-        return "index";
+    public ModelAndView index(Principal principal){
+        var model = new ModelAndView();
+        model.setViewName("index");
+        model.addObject("trainerTypes", trainerTypeService.listTrainersTypes(principal.getName()));
+        model.addObject("name", principal.getName());
+        return model;
     }
 
     @PostMapping("/registerTrainer")
@@ -19,6 +28,15 @@ public class IndexController {
         var model = new ModelAndView();
         model.setViewName("register");
         model.addObject("name", trainerName);
+        return model;
+    }
+
+    @GetMapping("/preFight")
+    public ModelAndView preFight(Principal principal, @RequestParam String opponentName){
+        var model = new ModelAndView();
+        model.setViewName("prefight");
+        model.addObject("name", principal.getName());
+        model.addObject("opponentName", opponentName);
         return model;
     }
 

@@ -5,15 +5,14 @@ import com.miage.altea.game_ui.pokemonTypes.bo.TrainerType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 @Service
@@ -24,11 +23,15 @@ public class TrainerTypeServiceImpl implements TrainerTypeService {
     @Autowired
     private PokemonTypeService pokemonTypeService;
 
-    public List<TrainerType> listTrainersTypes() {
+    private TrainerType[] getTrainers() {
         HttpHeaders entete = new HttpHeaders();
         entete.setContentLanguage(LocaleContextHolder.getLocale());
-        TrainerType[] lpoke = this.restTemplate.getForObject(TrainerServiceUrl+"/trainers/", TrainerType[].class);
         //boucle de parcour des pokemon pour chercher les details sur l'api pokemon
+        return this.restTemplate.getForObject(TrainerServiceUrl+"/trainers/", TrainerType[].class);
+    }
+
+    public List<TrainerType> listTrainersTypes() {
+        TrainerType[] lpoke = getTrainers();
 
         for (TrainerType trainer : lpoke ) {
 
@@ -41,6 +44,17 @@ public class TrainerTypeServiceImpl implements TrainerTypeService {
         */
 
         return List.of(lpoke);
+    }
+
+    public List<TrainerType> listTrainersTypes(String principal) {
+        TrainerType[] lpoke = getTrainers();
+        List<TrainerType> tlist = new ArrayList<>();
+        for (TrainerType trainer : lpoke ) {
+            if ( ! principal.equals( trainer.getName() ) ){
+                tlist.add(trainer);
+            }
+        }
+        return tlist;
     }
 
     public TrainerType getTrainerType(String name) {

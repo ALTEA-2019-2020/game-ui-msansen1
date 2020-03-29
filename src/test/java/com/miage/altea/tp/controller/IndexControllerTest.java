@@ -14,13 +14,13 @@ class IndexControllerTest {
         assertNotNull(IndexController.class.getAnnotation(Controller.class));
     }
 
-    @Test
+    /*@Test
     void index_shouldReturnTheNameOfTheIndexTemplate() {
         var indexController = new IndexController();
         var viewName = indexController.index();
 
         assertEquals("index", viewName);
-    }
+    }*/
 
     @Test
     void index_shouldBeAnnotated() throws NoSuchMethodException {

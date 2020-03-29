@@ -20,6 +20,10 @@ public class TrainerPrincipal implements UserDetails {
         return Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER"));
     }
 
+    public TrainerType getTrainer() {
+        return trainer;
+    }
+
     @Override
     public String getPassword() {
         return trainer.getPassword();
