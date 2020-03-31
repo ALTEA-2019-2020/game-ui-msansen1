@@ -20,6 +20,10 @@ public class TrainerPrincipal implements UserDetails {
         return Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER"));
     }
 
+    public TrainerType getTrainer() {
+        return trainer;
+    }
+
     @Override
     public String getPassword() {
         return trainer.getPassword();
@@ -32,17 +36,17 @@ public class TrainerPrincipal implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
     @Override

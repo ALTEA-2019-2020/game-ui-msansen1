@@ -1,0 +1,516 @@
+{
+	"info": {
+		"_postman_id": "b7b7beae-cdcf-42c1-b6c8-36ed688f3ea8",
+		"name": "Altea",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "trainers-api",
+			"item": [
+				{
+					"name": "localhost",
+					"item": [
+						{
+							"name": "http://localhost:8081/trainers/Ash",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8081/trainers/Ash",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"trainers",
+										"Ash"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "http://localhost:8081/trainers/post",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"Bug Catcher\",\n  \"team\": [\n    {\"pokemonTypeId\": 13, \"level\": 6},\n    {\"pokemonTypeId\": 10, \"level\": 6},\n    {\"pokemonTypeId\": 12, \"level\": 6}\n  ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8081/trainers/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"trainers",
+										""
+									]
+								},
+								"description": "post a trainer"
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "heroku",
+					"item": [
+						{
+							"name": "/trainers",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://trainer-type-msn.herokuapp.com/trainers/",
+									"protocol": "https",
+									"host": [
+										"trainer-type-msn",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"trainers",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/trainers/Ash",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8081/trainers/Ash",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"trainers",
+										"Ash"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"auth": {
+				"type": "basic",
+				"basic": [
+					{
+						"key": "username",
+						"value": "user",
+						"type": "string"
+					},
+					{
+						"key": "password",
+						"value": "3563cd85-9088-41c7-8569-5e3fa3849005",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "bead8544-6244-406f-a26c-4d17d74d35f3",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "8f864124-b0de-4175-abcc-85bb733dfeba",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "pokemon-api",
+			"item": [
+				{
+					"name": "localhost",
+					"item": [
+						{
+							"name": "/pokemon-types/25",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/pokemon-types/25",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"pokemon-types",
+										"25"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/pokemon-types",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "1eb46674-1ecb-4c7b-9eed-4aebea80571c",
+										"exec": [
+											"pm.test(\"Bulbasaur\", function () {",
+											"    var bulbasaur = pm.response.json();",
+											"    pm.expect(bulbasaur.id).to.eq(1);",
+											"    pm.expect(bulbasaur.name).to.eq(\"Bulbasaur\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept-Language",
+										"value": "en",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8080/pokemon-types/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"pokemon-types",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "heroku",
+					"item": [
+						{
+							"name": "/pokemon-types/25",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/pokemon-types/25",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"pokemon-types",
+										"25"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/pokemon-types",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "1eb46674-1ecb-4c7b-9eed-4aebea80571c",
+										"exec": [
+											"pm.test(\"Bulbasaur\", function () {",
+											"    var bulbasaur = pm.response.json();",
+											"    pm.expect(bulbasaur.id).to.eq(1);",
+											"    pm.expect(bulbasaur.name).to.eq(\"Bulbasaur\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept-Language",
+										"type": "text",
+										"value": "en"
+									}
+								],
+								"url": {
+									"raw": "https://pokemon-type-msn-tp3.herokuapp.com/pokemon-types/",
+									"protocol": "https",
+									"host": [
+										"pokemon-type-msn-tp3",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"pokemon-types",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "battle-api",
+			"item": [
+				{
+					"name": "localhost",
+					"item": [
+						{
+							"name": "/battles/?trainer=Ash&opponent=Misty",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8082/battles/?trainer=Ash&opponent=Misty",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8082",
+									"path": [
+										"battles",
+										""
+									],
+									"query": [
+										{
+											"key": "trainer",
+											"value": "Ash"
+										},
+										{
+											"key": "opponent",
+											"value": "Misty"
+										}
+									]
+								},
+								"description": "createBattle"
+							},
+							"response": []
+						},
+						{
+							"name": "/battles/",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8082/battles/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8082",
+									"path": [
+										"battles",
+										""
+									]
+								},
+								"description": "get battles"
+							},
+							"response": []
+						},
+						{
+							"name": "/battles/battleid",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8082/battles/091fe165-432e-4dd0-8194-9de3f5a4b690",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8082",
+									"path": [
+										"battles",
+										"091fe165-432e-4dd0-8194-9de3f5a4b690"
+									]
+								},
+								"description": "get onebattle"
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "heroku",
+					"item": [
+						{
+							"name": "battles/?trainer=Ash&opponent=Misty",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "https://battle-api-msn.herokuapp.com/battles/?trainer=Ash&opponent=Misty",
+									"protocol": "https",
+									"host": [
+										"battle-api-msn",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"battles",
+										""
+									],
+									"query": [
+										{
+											"key": "trainer",
+											"value": "Ash"
+										},
+										{
+											"key": "opponent",
+											"value": "Misty"
+										}
+									]
+								},
+								"description": "createBattle"
+							},
+							"response": []
+						},
+						{
+							"name": "/battles/",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://battle-api-msn.herokuapp.com/battles/",
+									"protocol": "https",
+									"host": [
+										"battle-api-msn",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"battles",
+										""
+									]
+								},
+								"description": "get battles"
+							},
+							"response": []
+						},
+						{
+							"name": "/battles/battleid",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://battle-api-msn.herokuapp.com/battles/d734efc5-f101-469f-8b8c-4a93e1671b6a",
+									"protocol": "https",
+									"host": [
+										"battle-api-msn",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"battles",
+										"d734efc5-f101-469f-8b8c-4a93e1671b6a"
+									]
+								},
+								"description": "get onebattle"
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "3563cd85-9088-41c7-8569-5e3fa3849005",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "user",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "88a517ea-590d-4a1a-ba93-7b0cf88cae9e",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "148223ec-28cc-4300-ae89-33d15d2b4d63",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

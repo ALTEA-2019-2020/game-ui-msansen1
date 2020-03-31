@@ -10,23 +10,49 @@
 
     <div class="row col-md-10">
 
-        <blockquote class="blockquote">
-            Hello there!
-            Welcome to the world of Pokémon!
-            My name is Oak! People call me the Pokémon Prof!
-            This world is inhabited by creatures called Pokémon!
-            For some people, Pokémon are pets. Other use them for fights.
-            Myself… I study Pokémon as a profession. First, what is your name?
-        </blockquote>
+        <div class="col-md-5">
+            <blockquote class="blockquote">
+                Hello {{name}}!
+                Welcome to the world of Pokémon!
+                My name is Oak! People call me the Pokémon Prof!
+                This world is inhabited by creatures called Pokémon!
+                For some people, Pokémon are pets. Other use them for fights.
+                Myself… I study Pokémon as a profession. You can fight withs trainers, choose which one you want to fight with ?
 
-        <form action="/registerTrainer" method="post">
-            <div class="form-group">
-                <label for="trainerName">Trainer name</label>
-                <input type="text" class="form-control" id="trainerName" name="trainerName" aria-describedby="trainerHelp" placeholder="Enter your name">
-                <small id="trainerHelp" class="form-text text-muted">This will be your name in the game !</small>
+            </blockquote>
+        </div>
+
+        <div class="card-deck">
+            <div class="col-md-10">
+                <div class="card shadow-sm mb-3">
+                    <div class="card-header">
+                        <h4 class="my-0 font-weight-normal">Browse</h4>
+                    </div>
+                    <div class="card-body">
+                        <a href="trainers/" class="btn btn-primary">View available trainers</a>
+                        <br><br>
+                        <a href="pokedex" class="btn btn-primary">View all pokemons</a>
+                    </div>
+                </div>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
+        </div>
+
+        <div class="card-deck">
+            {{#trainerTypes}}
+            <div class="col-md-10">
+                <div class="card shadow-sm mb-3">
+                    <div class="card-header">
+                        <h4 class="my-0 font-weight-normal">{{name}}</h4>
+                    </div>
+                    <div class="card-body">
+                        <span>       </span>
+                        <a href="trainers/{{name}}" class="btn btn-primary">View team</a>
+                        <a href="fight/{{name}}" class="btn btn-primary">Fight</a>
+                    </div>
+                </div>
+            </div>
+            {{/trainerTypes}}
+        </div>
     </div>
 
 </div>
