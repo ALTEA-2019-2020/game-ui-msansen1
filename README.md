@@ -20,6 +20,7 @@ Deux dresseurs de test sont disponibles:
 |Misty |misty_password |
 
 Une fois connecté, une liste de dresseurs disponibles pour le combat vous sera proposée
+[hardcopy] https://github.com/ALTEA-2019-2020/game-ui-msansen1/blob/develop/src/main/resources/static/images/demo.png?raw=true "Pokemon GameUI"
 
 Il suffit enfin de cliquer sur "Attack" pour lancer un tour.
 
