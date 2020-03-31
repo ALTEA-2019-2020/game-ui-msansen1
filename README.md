@@ -1,4 +1,7 @@
 # game-ui-msansen1
+
+[![Generic badge](https://img.shields.io/badge/JAVA-11-GREEN.svg)](https://shields.io/)  [![Generic badge](https://img.shields.io/badge/SpringBOOT-2.2.4-BLUE.svg)](https://shields.io/)
+
 game-ui-msansen1 created by GitHub Classroom
 
 Page de combat de Pokemons
