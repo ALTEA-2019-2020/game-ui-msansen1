@@ -11,7 +11,7 @@ cette page fait appel a 3 APIs differentes
  - une api de dresseurs de pokemon qui associe les dresseurs a leurs pokemons
  - une api qui permet l'affrontement de dresseurs et de leurs équipes
 
-#Faire une partie
+# Faire une partie
 [Demo Hosted on Heroku](https://game-ui-msn.herokuapp.com/)
 
 Connectez vous a la plateforme de [Demo](https://game-ui-msn.herokuapp.com/) a l'aide de votre identifiant de dresseur
@@ -30,7 +30,7 @@ Il suffit enfin de cliquer sur "Attack" pour lancer un tour.
 
 Enjoy !!
 
-#Configuration necessaire au lancement :  
+# Configuration necessaire au lancement :  
 
 | Variable | Description  |
 |:-:|:-:|
@@ -40,7 +40,7 @@ Enjoy !!
 |API_TRAINERTYPE_USERNAME |Api de trainers:Basic Auth connection Username |
 |API_TRAINERTYPE_PASSWORD |Api de trainers:Basic Auth Password |
 
-#API disponibles  
+# API disponibles  
 NA
 
 # Projets liés:  
