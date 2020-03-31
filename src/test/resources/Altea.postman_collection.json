@@ -12,12 +12,12 @@
 					"name": "localhost",
 					"item": [
 						{
-							"name": "http://localhost:8081/trainers/Ash",
+							"name": "Get /trainers/Ash",
 							"request": {
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8081/trainers/Ash",
+									"raw": "http://localhost:8081/trainers/BugCatcher",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -25,14 +25,51 @@
 									"port": "8081",
 									"path": [
 										"trainers",
-										"Ash"
+										"BugCatcher"
 									]
 								}
 							},
 							"response": []
 						},
 						{
-							"name": "http://localhost:8081/trainers/post",
+							"name": "post /trainers/ create",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"BugCatcher\",\n  \"password\": \"BugCatcherPassword\",\n  \"team\": [\n    {\"pokemonTypeId\": 13, \"level\": 6},\n    {\"pokemonTypeId\": 10, \"level\": 6},\n    {\"pokemonTypeId\": 12, \"level\": 6}\n  ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8081/trainers/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"trainers",
+										""
+									]
+								},
+								"description": "post a trainer"
+							},
+							"response": []
+						},
+						{
+							"name": "Put /trainers/ update",
 							"request": {
 								"method": "PUT",
 								"header": [
@@ -45,7 +82,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"name\": \"Bug Catcher\",\n  \"team\": [\n    {\"pokemonTypeId\": 13, \"level\": 6},\n    {\"pokemonTypeId\": 10, \"level\": 6},\n    {\"pokemonTypeId\": 12, \"level\": 6}\n  ]\n}",
+									"raw": "{\n  \"name\": \"BugCatcher\",\n  \"password\": \"BugCatcherPasswordd\",\n  \"team\": [\n    {\"pokemonTypeId\": 13, \"level\": 6},\n    {\"pokemonTypeId\": 10, \"level\": 6},\n    {\"pokemonTypeId\": 12, \"level\": 6}\n  ]\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -102,17 +139,56 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8081/trainers/Ash",
-									"protocol": "http",
+									"raw": "https://trainer-type-msn.herokuapp.com/trainers/Ash",
+									"protocol": "https",
 									"host": [
-										"localhost"
+										"trainer-type-msn",
+										"herokuapp",
+										"com"
 									],
-									"port": "8081",
 									"path": [
 										"trainers",
 										"Ash"
 									]
 								}
+							},
+							"response": []
+						},
+						{
+							"name": "post /trainers/ create",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"BugCatcher\",\n  \"password\": \"BugCatcherPassword\",\n  \"team\": [\n    {\"pokemonTypeId\": 13, \"level\": 6},\n    {\"pokemonTypeId\": 10, \"level\": 6},\n    {\"pokemonTypeId\": 12, \"level\": 6}\n  ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://trainer-type-msn.herokuapp.com/trainers/",
+									"protocol": "https",
+									"host": [
+										"trainer-type-msn",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"trainers",
+										""
+									]
+								},
+								"description": "post a trainer"
 							},
 							"response": []
 						}
@@ -167,12 +243,34 @@
 					"name": "localhost",
 					"item": [
 						{
-							"name": "/pokemon-types/25",
+							"name": "/pokemon-types/1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "9df835c3-c882-45c1-89fe-3f0beeddcc25",
+										"exec": [
+											"pm.test(\"Bulbasaur\", function () {",
+											"    var bulbasaur = pm.response.json();",
+											"    pm.expect(bulbasaur.id).to.eq(1);",
+											"    pm.expect(bulbasaur.name).to.eq(\"Bulbasaur\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"request": {
 								"method": "GET",
-								"header": [],
+								"header": [
+									{
+										"key": "Accept-Language",
+										"value": "en",
+										"type": "text"
+									}
+								],
 								"url": {
-									"raw": "http://localhost:8080/pokemon-types/25",
+									"raw": "http://localhost:8080/pokemon-types/1",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -180,7 +278,49 @@
 									"port": "8080",
 									"path": [
 										"pokemon-types",
-										"25"
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/pokemon-types/1 FR",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "fdd923e9-6349-4157-88b9-2d29ae03f322",
+										"exec": [
+											"pm.test(\"Bulbizarre\", function () {",
+											"    var bulbasaur = pm.response.json();",
+											"    pm.expect(bulbasaur.id).to.eq(1);",
+											"    pm.expect(bulbasaur.name).to.eq(\"Bulbizarre\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept-Language",
+										"value": "fr",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8080/pokemon-types/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"pokemon-types",
+										"1"
 									]
 								}
 							},
@@ -194,10 +334,19 @@
 									"script": {
 										"id": "1eb46674-1ecb-4c7b-9eed-4aebea80571c",
 										"exec": [
+											"pm.test(\"all pokemon types\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.length).to.eq(151);",
+											"});",
+											"",
 											"pm.test(\"Bulbasaur\", function () {",
-											"    var bulbasaur = pm.response.json();",
-											"    pm.expect(bulbasaur.id).to.eq(1);",
-											"    pm.expect(bulbasaur.name).to.eq(\"Bulbasaur\");",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData[0].name).to.eq(\"Bulbasaur\");",
+											"});",
+											"",
+											"pm.test(\"Ivysaur\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData[1].name).to.eq(\"Ivysaur\");",
 											"});"
 										],
 										"type": "text/javascript"
@@ -227,6 +376,109 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "/pokemon-types FR",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "1eb46674-1ecb-4c7b-9eed-4aebea80571c",
+										"exec": [
+											"pm.test(\"all pokemon types\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.length).to.eq(151);",
+											"});",
+											"",
+											"pm.test(\"bulbizarre\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData[0].name).to.eq(\"Bulbizarre\");",
+											"});",
+											"",
+											"pm.test(\"Herbizarre\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData[1].name).to.eq(\"Herbizarre\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept-Language",
+										"type": "text",
+										"value": "fr"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8080/pokemon-types/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"pokemon-types",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "?types=electric",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/pokemon-types/?types=electric",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"pokemon-types",
+										""
+									],
+									"query": [
+										{
+											"key": "types",
+											"value": "electric"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "?types=bug,poison",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/pokemon-types/?types=bug,poison",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"pokemon-types",
+										""
+									],
+									"query": [
+										{
+											"key": "types",
+											"value": "bug,poison"
+										}
+									]
+								}
+							},
+							"response": []
 						}
 					],
 					"protocolProfileBehavior": {},
@@ -236,32 +488,66 @@
 					"name": "heroku",
 					"item": [
 						{
-							"name": "/pokemon-types/25",
+							"name": "?types=electric",
 							"request": {
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8080/pokemon-types/25",
-									"protocol": "http",
+									"raw": "https://pokemon-type-msn-tp3.herokuapp.com/pokemon-types/?types=electric",
+									"protocol": "https",
 									"host": [
-										"localhost"
+										"pokemon-type-msn-tp3",
+										"herokuapp",
+										"com"
 									],
-									"port": "8080",
 									"path": [
 										"pokemon-types",
-										"25"
+										""
+									],
+									"query": [
+										{
+											"key": "types",
+											"value": "electric"
+										}
 									]
 								}
 							},
 							"response": []
 						},
 						{
-							"name": "/pokemon-types",
+							"name": "?types=bug,poison",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://pokemon-type-msn-tp3.herokuapp.com/pokemon-types/?types=bug,poison",
+									"protocol": "https",
+									"host": [
+										"pokemon-type-msn-tp3",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"pokemon-types",
+										""
+									],
+									"query": [
+										{
+											"key": "types",
+											"value": "bug,poison"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/pokemon-types/1",
 							"event": [
 								{
 									"listen": "test",
 									"script": {
-										"id": "1eb46674-1ecb-4c7b-9eed-4aebea80571c",
+										"id": "9df835c3-c882-45c1-89fe-3f0beeddcc25",
 										"exec": [
 											"pm.test(\"Bulbasaur\", function () {",
 											"    var bulbasaur = pm.response.json();",
@@ -283,6 +569,58 @@
 									}
 								],
 								"url": {
+									"raw": "https://pokemon-type-msn-tp3.herokuapp.com/pokemon-types/1",
+									"protocol": "https",
+									"host": [
+										"pokemon-type-msn-tp3",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"pokemon-types",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/pokemon-types",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "1eb46674-1ecb-4c7b-9eed-4aebea80571c",
+										"exec": [
+											"pm.test(\"all pokemon types\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.length).to.eq(151);",
+											"});",
+											"",
+											"pm.test(\"Bulbasaur\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData[0].name).to.eq(\"Bulbasaur\");",
+											"});",
+											"",
+											"pm.test(\"Ivysaur\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData[1].name).to.eq(\"Ivysaur\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept-Language",
+										"value": "en",
+										"type": "text"
+									}
+								],
+								"url": {
 									"raw": "https://pokemon-type-msn-tp3.herokuapp.com/pokemon-types/",
 									"protocol": "https",
 									"host": [
@@ -293,6 +631,101 @@
 									"path": [
 										"pokemon-types",
 										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/pokemon-types FR",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "1eb46674-1ecb-4c7b-9eed-4aebea80571c",
+										"exec": [
+											"pm.test(\"all pokemon types\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.length).to.eq(151);",
+											"});",
+											"",
+											"pm.test(\"bulbizarre\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData[0].name).to.eq(\"Bulbizarre\");",
+											"});",
+											"",
+											"pm.test(\"Herbizarre\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData[1].name).to.eq(\"Herbizarre\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept-Language",
+										"type": "text",
+										"value": "fr"
+									}
+								],
+								"url": {
+									"raw": "https://pokemon-type-msn-tp3.herokuapp.com/pokemon-types/",
+									"protocol": "https",
+									"host": [
+										"pokemon-type-msn-tp3",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"pokemon-types",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/pokemon-types/1 FR",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "fdd923e9-6349-4157-88b9-2d29ae03f322",
+										"exec": [
+											"pm.test(\"Bulbizarre\", function () {",
+											"    var bulbasaur = pm.response.json();",
+											"    pm.expect(bulbasaur.id).to.eq(1);",
+											"    pm.expect(bulbasaur.name).to.eq(\"Bulbizarre\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept-Language",
+										"type": "text",
+										"value": "fr"
+									}
+								],
+								"url": {
+									"raw": "https://pokemon-type-msn-tp3.herokuapp.com/pokemon-types/1",
+									"protocol": "https",
+									"host": [
+										"pokemon-type-msn-tp3",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"pokemon-types",
+										"1"
 									]
 								}
 							},
@@ -312,20 +745,19 @@
 					"name": "localhost",
 					"item": [
 						{
-							"name": "/battles/?trainer=Ash&opponent=Misty",
+							"name": "/battles?trainer=Ash&opponent=Misty",
 							"request": {
 								"method": "POST",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8082/battles/?trainer=Ash&opponent=Misty",
+									"raw": "http://localhost:8082/battles?trainer=Ash&opponent=Misty",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
 									"port": "8082",
 									"path": [
-										"battles",
-										""
+										"battles"
 									],
 									"query": [
 										{
@@ -343,20 +775,19 @@
 							"response": []
 						},
 						{
-							"name": "/battles/",
+							"name": "/battles",
 							"request": {
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8082/battles/",
+									"raw": "http://localhost:8082/battles",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
 									"port": "8082",
 									"path": [
-										"battles",
-										""
+										"battles"
 									]
 								},
 								"description": "get battles"
